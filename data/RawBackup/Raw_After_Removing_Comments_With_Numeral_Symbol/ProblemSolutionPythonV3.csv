@@ -39239,7 +39239,7 @@ import math
 num=int(input(""Enter the Number:""))
 print(""Square root of "",num,"" is : "",math.sqrt(num))"
 2432,Find the power of a number using recursion,"def Power(num1,num2):    if num2==0:        return 1    return num1*Power(num1, num2-1)num1=int(input(""Enter the base value:""))num2=int(input(""Enter the power value:""))print(""Power of Number Using Recursion is:"",Power(num1,num2))"
-2433,Convert a decimal number to hexadecimal using recursion,"str3=""""def DecimalToHexadecimal(n):    global str3    if(n!=0):        rem = n % 16        if (rem < 10):            str3 += (chr)(rem + 48) # 48 Ascii = 0        else:            str3 += (chr)(rem + 55) #55 Ascii = 7        DecimalToHexadecimal(n // 16)    return str3n=int(input(""Enter the Decimal Value:""))str=DecimalToHexadecimal(n)print(""Hexadecimal Value of Decimal number is:"",''.join(reversed(str)))"
+2433,Convert a decimal number to hexadecimal using recursion,"str3=""""def DecimalToHexadecimal(n):    global str3    if(n!=0):        rem = n % 16        if (rem < 10):            str3 += (chr)(rem + 48) "
 2434,Python Program to Generate Gray Codes using Recursion,"def get_gray_codes(n):
     if n == 0:
         return ['']
@@ -56756,7 +56756,7 @@ if count>=1:
     print(""Arrays are not disjoint."")
 else:
     print(""Arrays are disjoint."")"
-3295,Program to read and display a Matrix,"# Get size of matrixrow_size=int(input(""Enter the row Size Of the Matrix:""))col_size=int(input(""Enter the columns Size Of the Matrix:""))matrix=[]# Taking input of the matrixprint(""Enter the Matrix Element:"")for i in range(row_size):    matrix.append([int(j) for j in input().split()])# display the Matrixprint(""Given Matrix is:"")for m in matrix:    print(m)"
+3295,Program to read and display a Matrix,
 3296,Python Program to Find if a Number is Prime or Not Prime Using Recursion,"def check(n, div = None):
     if div is None:
         div = n - 1
