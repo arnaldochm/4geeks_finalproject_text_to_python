@@ -1,0 +1,1457 @@
+,Problem,Python Code
+41,Write a NumPy program to remove the leading and trailing whitespaces of all the elements of a given array. ,"import numpy as np
+x = np.array([' python exercises ', ' PHP  ', ' java  ', '  C++'], dtype=np.str)
+print(""Original Array:"")
+print(x)
+stripped = np.char.strip(x)
+print(""\nRemove the leading and trailing whitespaces: "", stripped)
+"
+107,Write a Python program to display formatted text (width=50) as output. ,"import textwrap
+sample_text = '''
+  Python is a widely used high-level, general-purpose, interpreted,
+  dynamic programming language. Its design philosophy emphasizes
+  code readability, and its syntax allows programmers to express
+  concepts in fewer lines of code than possible in languages such
+  as C++ or Java.
+  '''
+print()
+print(textwrap.fill(sample_text, width=50))
+print()
+"
+128,Write a Python program to delete the first item from a singly linked list. ,"class Node:
+    
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+class singly_linked_list:
+    def __init__(self):
+        
+        self.tail = None
+        self.head = None
+        self.count = 0
+
+    def append_item(self, data):
+        
+        node = Node(data)
+        if self.head:
+            self.head.next = node
+            self.head = node
+        else:
+            self.tail = node
+            self.head = node
+        self.count += 1
+    
+    def delete_item(self, data):
+        
+        current = self.tail
+        prev = self.tail
+        while current:
+            if current.data == data:
+                if current == self.tail:
+                    self.tail = current.next
+                else:
+                    prev.next = current.next
+                self.count -= 1
+                return
+            prev = current
+            current = current.next
+    def iterate_item(self):
+        
+        current_item = self.tail
+        while current_item:
+            val = current_item.data
+            current_item = current_item.next
+            yield val
+
+items = singly_linked_list()
+items.append_item('PHP')
+items.append_item('Python')
+items.append_item('C#')
+items.append_item('C++')
+items.append_item('Java')
+
+print(""Original list:"")
+for val in items.iterate_item():
+    print(val)
+
+print(""\nAfter removing the first item from the list:"")
+items.delete_item('PHP')
+for val in items.iterate_item():
+    print(val)
+"
+179,Write a NumPy program to insert a space between characters of all the elements of a given array. ,"import numpy as np
+x = np.array(['python exercises', 'PHP', 'java', 'C++'], dtype=np.str)
+print(""Original Array:"")
+print(x)
+r = np.char.join("" "", x)
+print(r)
+"
+194,"Write a Python program to create a doubly linked list, append some items and iterate through the list (print forward). ","class Node(object):
+    
+    def __init__(self, data=None, next=None, prev=None):
+        self.data = data
+        self.next = next
+        self.prev = prev
+
+class doubly_linked_list(object):
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.count = 0
+
+    def append_item(self, data):
+        
+        new_item = Node(data, None, None)
+        if self.head is None:
+            self.head = new_item
+            self.tail = self.head
+        else:
+            new_item.prev = self.tail
+            self.tail.next = new_item
+            self.tail = new_item
+
+        self.count += 1
+
+    def print_foward(self):
+        for node in self.iter():
+            print(node)
+            
+    def iter(self):
+        
+        current = self.head
+        while current:
+            item_val = current.data
+            current = current.next
+            yield item_val
+
+items = doubly_linked_list()
+items.append_item('PHP')
+items.append_item('Python')
+items.append_item('C#')
+items.append_item('C++')
+items.append_item('Java')
+
+print(""Items in the Doubly linked list: "")
+items.print_foward()
+"
+282,Write a Python program to count the number of items of a given doubly linked list. ,"class Node(object):
+    
+    def __init__(self, data=None, next=None, prev=None):
+        self.data = data
+        self.next = next
+        self.prev = prev
+
+class doubly_linked_list(object):
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.count = 0
+
+    def append_item(self, data):
+        
+        new_item = Node(data, None, None)
+        if self.head is None:
+            self.head = new_item
+            self.tail = self.head
+        else:
+            new_item.prev = self.tail
+            self.tail.next = new_item
+            self.tail = new_item
+
+        self.count += 1
+
+
+items = doubly_linked_list()
+items.append_item('PHP')
+items.append_item('Python')
+items.append_item('C#')
+items.append_item('C++')
+items.append_item('Java')
+items.append_item('SQL')
+
+print(""Number of items of the  Doubly linked list:"",items.count)
+"
+315,Write a Python program to create a doubly linked list and print nodes from current position to first node. ,"class Node(object):
+    
+    def __init__(self, data=None, next=None, prev=None):
+        self.data = data
+        self.next = next
+        self.prev = prev
+	
+class doubly_linked_list(object):
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.count = 0
+
+    def append_item(self, data):
+        
+        new_item = Node(data, None, None)
+        if self.head is None:
+            self.head = new_item
+            self.tail = self.head
+        else:
+            new_item.prev = self.tail
+            self.tail.next = new_item
+            self.tail = new_item
+
+        self.count += 1
+
+    def print_foward(self):
+        for node in self.iter():
+            print(node)
+
+    def print_backward(self):
+        current = self.tail
+        while current:
+            print(current.data)
+            current = current.prev
+            
+    def iter(self):
+        
+        current = self.head
+        while current:
+            item_val = current.data
+            current = current.next
+            yield item_val
+
+items = doubly_linked_list()
+items.append_item('PHP')
+items.append_item('Python')
+items.append_item('C#')
+items.append_item('C++')
+items.append_item('Java')
+
+print(""Print Items in the Doubly linked backwards:"")
+items.print_backward()
+"
+340,Write a Python program to delete a specific item from a given doubly linked list. ,"class Node(object):
+    
+    def __init__(self, value=None, next=None, prev=None):
+        self.value = value
+        self.next = next
+        self.prev = prev
+
+class doubly_linked_list(object):
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.count = 0
+
+    def append_item(self, value):
+        
+        new_item = Node(value, None, None)
+        if self.head is None:
+            self.head = new_item
+            self.tail = self.head
+        else:
+            new_item.prev = self.tail
+            self.tail.next = new_item
+            self.tail = new_item
+        self.count += 1
+    
+    def iter(self):
+        
+        current = self.head
+        while current:
+            item_val = current.value
+            current = current.next
+            yield item_val
+
+    def print_foward(self):
+        for node in self.iter():
+            print(node)   
+        
+    def search_item(self, val):
+         for node in self.iter():
+            if val == node:
+                return True
+         return False
+     
+    def delete(self, value):
+        
+        current = self.head
+        node_deleted = False
+        if current is None:
+            node_deleted = False
+
+        elif current.value == value:
+            self.head = current.next
+            self.head.prev = None
+            node_deleted = True
+
+        elif self.tail.value == value:
+            self.tail = self.tail.prev
+            self.tail.next = None
+            node_deleted = True
+
+        else:
+            while current:
+                if current.value == value:
+                    current.prev.next = current.next
+                    current.next.prev = current.prev
+                    node_deleted = True
+                current = current.next
+
+        if node_deleted:
+            self.count -= 1
+
+items = doubly_linked_list()
+items.append_item('PHP')
+items.append_item('Python')
+items.append_item('C#')
+items.append_item('C++')
+items.append_item('Java')
+items.append_item('SQL')
+
+print(""Original list:"")
+items.print_foward()
+
+items.delete(""Java"")
+items.delete(""Python"")
+print(""\nList after deleting two items:"")
+items.print_foward()
+"
+459,Write a Python program to set the indentation of the first line. ,"import textwrap
+sample_text ='''
+Python is a widely used high-level, general-purpose, interpreted, dynamic
+programming language. Its design philosophy emphasizes code readability,
+and its syntax allows programmers to express concepts in fewer lines of
+code than possible in languages such as C++ or Java.
+    '''
+
+text1 =  textwrap.dedent(sample_text).strip()
+print()
+print(textwrap.fill(text1,
+                    initial_indent='',
+                    subsequent_indent=' ' * 4,
+                    width=80,
+                    ))
+print()
+"
+467,Write a Python program to search a specific item in a given doubly linked list and return true if the item is found otherwise return false. ,"class Node(object):
+    
+    def __init__(self, data=None, next=None, prev=None):
+        self.data = data
+        self.next = next
+        self.prev = prev
+
+class doubly_linked_list(object):
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.count = 0
+
+    def append_item(self, data):
+        
+        new_item = Node(data, None, None)
+        if self.head is None:
+            self.head = new_item
+            self.tail = self.head
+        else:
+            new_item.prev = self.tail
+            self.tail.next = new_item
+            self.tail = new_item
+        self.count += 1
+    
+    def iter(self):
+        
+        current = self.head
+        while current:
+            item_val = current.data
+            current = current.next
+            yield item_val
+
+    def print_foward(self):
+        for node in self.iter():
+            print(node)   
+        
+    def search_item(self, val):
+         for node in self.iter():
+            if val == node:
+                return True
+         return False
+
+items = doubly_linked_list()
+items.append_item('PHP')
+items.append_item('Python')
+items.append_item('C#')
+items.append_item('C++')
+items.append_item('Java')
+items.append_item('SQL')
+
+print(""Original list:"")
+items.print_foward()
+print(""\n"")
+if items.search_item('SQL'):
+    print(""True"")
+else:
+    print(""False"")
+
+if items.search_item('C+'):
+    print(""True"")
+else:
+    print(""False"")
+"
+476,Write a Python program to set a new value of an item in a singly linked list using index value. ,"class Node:
+    
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+class singly_linked_list:
+    def __init__(self):
+        
+        self.tail = None
+        self.head = None
+        self.count = 0
+
+    def append_item(self, data):
+        
+        node = Node(data)
+        if self.head:
+            self.head.next = node
+            self.head = node
+        else:
+            self.tail = node
+            self.head = node
+        self.count += 1
+    
+    def __getitem__(self, index):
+        if index > self.count - 1:
+            return ""Index out of range""
+        current_val = self.tail
+        for n in range(index):
+            current_val = current_val.next
+        return current_val.data
+    
+    def __setitem__(self, index, value):
+        if index > self.count - 1:
+            raise Exception(""Index out of range."")
+        current = self.tail
+        for n in range(index):
+            current = current.next
+        current.data = value
+
+items = singly_linked_list()
+items.append_item('PHP')
+items.append_item('Python')
+items.append_item('C#')
+items.append_item('C++')
+items.append_item('Java')
+
+print(""Modify items by index:"")
+items[1] = ""SQL""
+print(""New value: "",items[1])
+items[4] = ""Perl""
+print(""New value: "",items[4])
+"
+558,Write a NumPy program to remove the leading whitespaces of all the elements of a given array. ,"import numpy as np
+x = np.array([' python exercises ', ' PHP  ', ' java  ', '  C++'], dtype=np.str)
+print(""Original Array:"")
+print(x)
+lstripped_char = np.char.lstrip(x)
+print(""\nRemove the leading whitespaces : "", lstripped_char)
+"
+669,Write a NumPy program to make the length of each element 15 of a given array and the string centered / left-justified / right-justified with paddings of _. ,"import numpy as np
+x = np.array(['python exercises', 'PHP', 'java', 'C++'], dtype=np.str)
+print(""Original Array:"")
+print(x)
+centered = np.char.center(x, 15, fillchar='_')
+left = np.char.ljust(x, 15, fillchar='_')
+right = np.char.rjust(x, 15, fillchar='_')
+print(""\nCentered ="", centered)
+print(""Left ="", left)
+print(""Right ="", right)
+"
+782,Write a Python program to remove existing indentation from all of the lines in a given text. ,"import textwrap
+sample_text = '''
+    Python is a widely used high-level, general-purpose, interpreted,
+    dynamic programming language. Its design philosophy emphasizes
+    code readability, and its syntax allows programmers to express
+    concepts in fewer lines of code than possible in languages such
+    as C++ or Java.
+    '''
+text_without_Indentation = textwrap.dedent(sample_text)
+print()
+print(text_without_Indentation )
+print()
+"
+993,Write a Python program to delete the last item from a singly linked list. ,"class Node:
+    
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+class singly_linked_list:
+    def __init__(self):
+        
+        self.tail = None
+        self.head = None
+        self.count = 0
+
+    def append_item(self, data):
+        
+        node = Node(data)
+        if self.head:
+            self.head.next = node
+            self.head = node
+        else:
+            self.tail = node
+            self.head = node
+        self.count += 1
+    
+    def delete_item(self, data):
+        
+        current = self.tail
+        prev = self.tail
+        while current:
+            if current.data == data:
+                if current == self.tail:
+                    self.tail = current.next
+                else:
+                    prev.next = current.next
+                self.count -= 1
+                return
+            prev = current
+            current = current.next
+    def iterate_item(self):
+        
+        current_item = self.tail
+        while current_item:
+            val = current_item.data
+            current_item = current_item.next
+            yield val
+
+items = singly_linked_list()
+items.append_item('PHP')
+items.append_item('Python')
+items.append_item('C#')
+items.append_item('C++')
+items.append_item('Java')
+
+print(""Original list:"")
+for val in items.iterate_item():
+    print(val)
+
+print(""\nAfter removing the last item from the list:"")
+items.delete_item('Java')
+for val in items.iterate_item():
+    print(val)
+"
+1148,Write a NumPy program to split the element of a given array with spaces. ,"import numpy as np
+x = np.array(['Python PHP Java C++'], dtype=np.str)
+print(""Original Array:"")
+print(x)
+r = np.char.split(x)
+print(""\nSplit the element of the said array with spaces: "")
+print(r)
+"
+1174,Write a Python program to add a prefix text to all of the lines in a string. ,"import textwrap
+sample_text ='''
+    Python is a widely used high-level, general-purpose, interpreted,
+    dynamic programming language. Its design philosophy emphasizes
+    code readability, and its syntax allows programmers to express
+    concepts in fewer lines of code than possible in languages such
+    as C++ or Java.
+    '''
+text_without_Indentation = textwrap.dedent(sample_text)
+wrapped = textwrap.fill(text_without_Indentation, width=50)
+
+final_result = textwrap.indent(wrapped, '> ')
+print()
+print(final_result)
+print()
+"
+1389,Write a Python program to access a specific item in a singly linked list using index value. ,"class Node:
+    
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+class singly_linked_list:
+    def __init__(self):
+        
+        self.tail = None
+        self.head = None
+        self.count = 0
+	
+    def append_item(self, data):
+        
+        node = Node(data)
+        if self.head:
+            self.head.next = node
+            self.head = node
+        else:
+            self.tail = node
+            self.head = node
+        self.count += 1
+    
+    def __getitem__(self, index):
+        if index > self.count - 1:
+            return ""Index out of range""
+        current_val = self.tail
+        for n in range(index):
+            current_val = current_val.next
+        return current_val.data
+
+
+items = singly_linked_list()
+items.append_item('PHP')
+items.append_item('Python')
+items.append_item('C#')
+items.append_item('C++')
+items.append_item('Java')
+
+print(""Search using index:"")
+print(items[0])
+print(items[1])
+print(items[4])
+print(items[5])
+print(items[10])
+"
+1407,Write a NumPy program to remove the trailing whitespaces of all the elements of a given array. ,"import numpy as np
+x = np.array([' python exercises ', ' PHP  ', ' java  ', '  C++'], dtype=np.str)
+print(""Original Array:"")
+print(x)
+rstripped_char = np.char.rstrip(x)
+print(""\nRemove the trailing whitespaces : "", rstripped_char)
+"
+1417,Write a NumPy program to combine last element with first element of two given ndarray with different shapes. ,"import numpy as np
+array1 = ['PHP','JS','C++']
+array2 = ['Python','C#', 'NumPy']    
+print(""Original arrays:"")          
+print(array1)
+print(array2)          
+result  = np.r_[array1[:-1], [array1[-1]+array2[0]], array2[1:]]   
+print(""\nAfter Combining:"")       
+print(result)
+"
+1638,Write a Python program to insert an item in front of a given doubly linked list. ,"class Node(object):
+    
+    def __init__(self, data=None, next=None, prev=None):
+        self.data = data
+        self.next = next
+        self.prev = prev
+
+class doubly_linked_list(object):
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.count = 0
+
+    def append_item(self, data):
+        
+        new_item = Node(data, None, None)
+        if self.head is None:
+            self.head = new_item
+            self.tail = self.head
+        else:
+            new_item.prev = self.tail
+            self.tail.next = new_item
+            self.tail = new_item
+        self.count += 1
+    
+    def iter(self):
+        
+        current = self.head
+        while current:
+            item_val = current.data
+            current = current.next
+            yield item_val
+
+    def print_foward(self):
+        for node in self.iter():
+            print(node)   
+        
+    def insert_start(self, data):        
+        if self.head is not None:
+            new_node = Node(data, None, None)
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+            self.count += 1
+
+items = doubly_linked_list()
+items.append_item('PHP')
+items.append_item('Python')
+items.append_item('C#')
+items.append_item('C++')
+items.append_item('Java')
+items.append_item('SQL')
+
+print(""Original list:"")
+items.print_foward()
+print(""\nAppend item in front of the list:"")
+items.insert_start(""Perl"")
+items.print_foward()
+"
+1642,Write a NumPy program to encode all the elements of a given array in cp500 and decode it again. ,"import numpy as np
+x = np.array(['python exercises', 'PHP', 'java', 'C++'], dtype=np.str)
+print(""Original Array:"")
+print(x)
+encoded_char = np.char.encode(x, 'cp500')
+decoded_char = np.char.decode(encoded_char,'cp500')
+print(""\nencoded ="", encoded_char)
+print(""decoded ="", decoded_char)
+"
+1676,Write a Python program to print a given doubly linked list in reverse order. ,"class Node(object):
+    
+    def __init__(self, data=None, next=None, prev=None):
+        self.data = data
+        self.next = next
+        self.prev = prev
+
+class doubly_linked_list(object):
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.count = 0
+
+    def append_item(self, data):
+        
+        new_item = Node(data, None, None)
+        if self.head is None:
+            self.head = new_item
+            self.tail = self.head
+        else:
+            new_item.prev = self.tail
+            self.tail.next = new_item
+            self.tail = new_item
+        self.count += 1
+    
+    def iter(self):
+        
+        current = self.head
+        while current:
+            item_val = current.data
+            current = current.next
+            yield item_val
+
+    def print_foward(self):
+        for node in self.iter():
+            print(node)   
+        
+    def reverse(self):
+        current = self.head
+        while current:
+            temp = current.next
+            current.next = current.prev
+            current.prev = temp
+            current = current.prev
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+
+items = doubly_linked_list()
+items.append_item('PHP')
+items.append_item('Python')
+items.append_item('C#')
+items.append_item('C++')
+items.append_item('Java')
+items.append_item('SQL')
+
+print(""Reverse list "")
+items.reverse()
+items.print_foward()
+"
+1702,Program to check if a string contains any special character in Python,"// C++ program to check if a string 
+// contains any special character
+  
+// import required packages
+
+
+using namespace std; 
+  
+// Function checks if the string 
+// contains any special character
+void run(string str)
+{
+      
+    // Make own character set 
+    regex regx(""[@_!#$%^&*()<>?/|}{~:]"");
+  
+    // Pass the string in regex_search 
+    // method
+    if(regex_search(str, regx) == 0)
+        cout << ""String is accepted"";
+    else
+        cout << ""String is not accepted."";
+} 
+  
+// Driver Code 
+int main() 
+{ 
+      
+    // Enter the string 
+    string str = ""Geeks$For$Geeks""; 
+      
+    // Calling run function
+    run(str); 
+  
+    return 0; 
+}
+  
+// This code is contributed by Yash_R"
+1974,Program to Print K using Alphabets in Python,"// C++ Program to design the
+// above pattern of K using alphabets
+
+using namespace std;
+
+
+// Function to print
+// the above Pattern
+void display(int n)
+{
+  int v = n;
+
+
+  // This loop is used
+  // for rows and prints
+  // the alphabets in
+  // decreasing order
+  while (v >= 0)
+  {
+    int c = 65;
+
+
+    // This loop is used
+    // for columns
+    for(int j = 0; j < v + 1; j++)
+    {
+      // chr() function converts the
+      // number to alphabet
+      cout << char(c + j) << "" "";
+    }
+
+
+    v--;
+    cout << endl;
+  }
+
+
+  // This loop is again used
+  // to rows and prints the
+  // half remaining pattern in
+  // increasing order
+  for(int i = 0; i < n + 1; i++)
+  {
+    int c = 65;
+
+
+    for(int j = 0; j < i + 1; j++)
+    {
+      cout << char(c + j) << "" "";
+    }
+    cout << endl;
+  }
+}
+
+
+// Driver code
+int main()
+{
+  int n = 5;
+  display(n);
+  return 0;
+}
+
+
+// This code is contributed by divyeshrabadiya07"
+2007,Program to print half Diamond star pattern in Python,"// C++ implementation to print the
+// half diamond star pattern
+  
+
+  
+using namespace std;
+  
+// Function to print the
+// half diamond star pattern
+void halfDiamondStar(int N)
+{
+    int i, j;
+  
+    // Loop to print the upper half
+    // diamond pattern
+    for (i = 0; i < N; i++) {
+        for (j = 0; j < i + 1; j++)
+            cout << ""*"";
+        cout << ""\n"";
+    }
+  
+    // Loop to print the lower half
+    // diamond pattern
+    for (i = 1; i < N; i++) {
+        for (j = i; j < N; j++)
+            cout << ""*"";
+        cout << ""\n"";
+    }
+}
+  
+// Driver Code
+int main()
+{
+    int N = 5;
+  
+    // Function Call
+    halfDiamondStar(N);
+}"
+2012,Find words which are greater than given length k in Python,"// C++ program to find all string
+// which are greater than given length k
+
+
+
+using namespace std;
+
+
+// function find string greater than
+// length k
+void string_k(string s, int k)
+{
+    // create the empty string
+    string w = """";
+    // iterate the loop till every space
+    for(int i = 0; i < s.size(); i++)
+    {
+        if(s[i] != ' ')
+         
+            // append this sub string in
+            // string w
+            w = w + s[i];
+        else {
+             
+            // if length of current sub
+            // string w is greater than
+            // k then print
+            if(w.size() > k)
+                cout << w << "" "";
+                w = """";
+        }
+    }
+}
+
+
+// Driver code
+int main()
+{
+    string s = ""geek for geeks"";
+    int k = 3;
+    s = s + "" "";
+    string_k(s, k);
+    return 0;
+}
+
+
+// This code is contributed by
+// Manish Shaw (manishshaw1)"
+2206,Count of groups having largest size while grouping according to sum of its digits in Python,"// C++ implementation to Count the
+// number of groups having the largest
+// size where groups are according
+// to the sum of its digits
+
+using namespace std;
+
+
+// function to return sum of digits of i
+int sumDigits(int n){
+    int sum = 0;
+    while(n)
+    {
+        sum += n%10;
+        n /= 10;
+    }
+
+
+    return sum;
+}
+
+
+// Create the dictionary of unique sum
+map<int,int> constDict(int n){
+     
+    // dictionary that contain
+    // unique sum count
+    map<int,int> d;
+
+
+    for(int i = 1; i < n + 1; ++i){
+        // calculate the sum of its digits
+        int sum1 = sumDigits(i);
+
+
+        if(d.find(sum1) == d.end())
+            d[sum1] = 1;
+        else
+            d[sum1] += 1;       
+    }
+
+
+    return d;
+}
+
+
+// function to find the
+// largest size of group
+int countLargest(int n){
+     
+    map<int,int> d = constDict(n);
+     
+    int size = 0;
+
+
+    // count of largest size group
+    int count = 0;
+
+
+    for(auto it = d.begin(); it != d.end(); ++it){
+        int k = it->first;
+        int val = it->second;
+
+
+        if(val > size){           
+            size = val;
+            count = 1;
+        }
+        else if(val == size)           
+            count += 1;
+    }
+
+
+    return count;
+}
+     
+// Driver code
+int main()
+{
+    int    n = 13;
+
+
+    int group = countLargest(n);
+
+
+    cout << group << endl;
+
+
+    return 0;
+}"
+2219,How to split the element of a given NumPy array with spaces in Python,"import numpy as np
+  
+  
+
+array = np.array(['PHP C# Python C Java C++'], dtype=np.str)
+print(array)
+  
+
+sparr = np.char.split(array)
+print(sparr)"
+2228,Program to check if a string contains any special character in Python,"// C++ program to check if a string 
+// contains any special character
+  
+// import required packages
+
+
+using namespace std; 
+  
+// Function checks if the string 
+// contains any special character
+void run(string str)
+{
+      
+    // Make own character set 
+    regex regx(""[@_!#$%^&*()<>?/|}{~:]"");
+  
+    // Pass the string in regex_search 
+    // method
+    if(regex_search(str, regx) == 0)
+        cout << ""String is accepted"";
+    else
+        cout << ""String is not accepted."";
+} 
+  
+// Driver Code 
+int main() 
+{ 
+      
+    // Enter the string 
+    string str = ""Geeks$For$Geeks""; 
+      
+    // Calling run function
+    run(str); 
+  
+    return 0; 
+}
+  
+// This code is contributed by Yash_R"
+2251,Program to print window pattern in Python,"// C++ program to print the pattern 
+// hollow square with plus inside it
+// window pattern
+
+using namespace std;
+  
+// Function to print pattern n means 
+// number of rows which we want
+void window_pattern (int n)
+{
+    int c, d;
+      
+    // If n is odd then we will have
+    // only one middle element
+    if (n % 2 != 0)
+    {
+        c = (n / 2) + 1;
+        d = 0;
+    }
+  
+    // If n is even then we will have two
+    // values
+    else
+    {
+        c = (n / 2) + 1;
+        d = n / 2 ;
+    }
+  
+    for(int i = 1; i <= n; i++)
+    {
+        for(int j = 1; j <= n; j++)
+        {
+           
+            // If i,j equals to corner row or
+            // column then ""*""
+            if (i == 1 || j == 1 ||
+                i == n || j == n)
+                cout << ""* "";
+  
+            else
+            {
+               
+                // If i,j equals to the middle 
+                // row or column then  ""*""
+                if (i == c || j == c)
+                    cout << ""* "";
+  
+                else if (i == d || j == d)
+                    cout << ""* "";
+  
+                else
+                    cout << ""  "";
+            }
+        }
+        cout << '\n';
+    }
+}
+  
+// Driver Code
+int main()
+{
+    int n = 7;
+   
+    window_pattern(n);
+    return 0;   
+}
+  
+// This code is contributed by himanshu77"
+2257,"Create an n x n square matrix, where all the sub-matrix have the sum of opposite corner elements as even in Python","// C++ program for
+// the above approach
+
+using namespace std;
+
+
+void sub_mat_even(int N)
+{
+  // Counter to initialize
+  // the values in 2-D array
+  int K = 1;
+   
+  // To create a 2-D array
+  // from to 1 to N*2
+  int A[N][N];
+   
+  for(int i = 0; i < N; i++)
+  {
+    for(int j = 0; j < N; j++)
+    {
+      A[i][j] = K;
+      K++;
+    }
+  }
+
+
+  // If found even we reverse
+  // the alternate row elements
+  // to get all diagonal elements
+  // as all even or all odd
+  if(N % 2 == 0)
+  {
+    for(int i = 0; i < N; i++)
+    {
+      if(i % 2 == 1)
+      {
+        int s = 0;
+        int l = N - 1;
+         
+        // Reverse the row
+        while(s < l)
+        {
+          swap(A[i][s],
+               A[i][l]);
+          s++;
+          l--;
+        }
+      }
+    }
+  }
+
+
+  // Print the formed array
+  for(int i = 0; i < N; i++)
+  {
+    for(int j = 0; j < N; j++)
+    {
+      cout << A[i][j] << "" "";
+    }
+    cout << endl;
+  }
+}
+
+
+// Driver code
+int main()
+{
+    int N = 4;
+   
+    // Function call
+    sub_mat_even(N);
+}
+
+
+// This code is contributed by mishrapriyanshu557"
+2312,Check whether the given string is Palindrome using Stack in Python,"// C++ implementation of the approach
+
+using namespace std;
+
+
+// Function that returns true
+// if string is a palindrome
+bool isPalindrome(string s)
+{
+    int length = s.size();
+
+
+    // Creating a Stack
+    stack<char> st;
+
+
+    // Finding the mid
+    int i, mid = length / 2;
+
+
+    for (i = 0; i < mid; i++) {
+        st.push(s[i]);
+    }
+
+
+    // Checking if the length of the string
+    // is odd, if odd then neglect the
+    // middle character
+    if (length % 2 != 0) {
+        i++;
+    }
+   
+    char ele;
+    // While not the end of the string
+    while (s[i] != '\0')
+    {
+         ele = st.top();
+         st.pop();
+
+
+    // If the characters differ then the
+    // given string is not a palindrome
+    if (ele != s[i])
+        return false;
+        i++;
+    }
+
+
+return true;
+}
+
+
+// Driver code
+int main()
+{
+    string s = ""madam"";
+
+
+    if (isPalindrome(s)) {
+        cout << ""Yes"";
+    }
+    else {
+        cout << ""No"";
+    }
+
+
+    return 0;
+}
+
+
+// This Code is Contributed by Harshit Srivastava"
+2400,Program to reverse a linked list using Stack in Python,"// C/C++ program to reverse linked list
+// using stack
+
+
+
+using namespace std;
+
+
+/* Link list node */
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+
+/* Given a reference (pointer to pointer) to
+   the head of a list and an int, push a new
+   node on the front of the list. */
+void push(struct Node** head_ref, int new_data)
+{
+    struct Node* new_node = new Node;
+
+
+    new_node->data = new_data;
+    new_node->next = (*head_ref);
+    (*head_ref) = new_node;
+}
+
+
+// Function to reverse linked list
+Node *reverseList(Node* head)
+{
+    // Stack to store elements of list
+    stack<Node *> stk;
+
+
+    // Push the elements of list to stack
+    Node* ptr = head;
+    while (ptr->next != NULL) {
+        stk.push(ptr);
+        ptr = ptr->next;
+    }
+
+
+    // Pop from stack and replace
+    // current nodes value'
+    head = ptr;
+    while (!stk.empty()) {
+        ptr->next = stk.top();
+
+
+        ptr = ptr->next;
+        stk.pop();
+    }
+     
+    ptr->next = NULL;
+     
+    return head;
+}
+
+
+// Function to print the Linked list
+void printList(Node* head)
+{
+    while (head) {
+        cout << head->data << "" "";
+        head = head->next;
+    }
+}
+
+
+// Driver Code
+int main()
+{
+    /* Start with the empty list */
+    struct Node* head = NULL;
+
+
+    /* Use push() to construct below list
+    1->2->3->4->5 */
+    push(&head, 5);
+    push(&head, 4);
+    push(&head, 3);
+    push(&head, 2);
+    push(&head, 1);
+
+
+    head = reverseList(head);
+
+
+    printList(head);
+
+
+    return 0;
+}"
+2413,Program to print the diamond shape in Python,"// C++ program to print diamond shape
+// with 2n rows
+
+using namespace std;
+
+
+// Prints diamond pattern with 2n rows
+void printDiamond(int n)
+{
+    int space = n - 1;
+
+
+    // run loop (parent loop)
+    // till number of rows
+    for (int i = 0; i < n; i++)
+    {
+        // loop for initially space,
+        // before star printing
+        for (int j = 0;j < space; j++)
+            cout << "" "";
+
+
+        // Print i+1 stars
+        for (int j = 0; j <= i; j++)
+            cout << ""* "";
+
+
+        cout << endl;
+        space--;
+    }
+
+
+    // Repeat again in reverse order
+    space = 0;
+
+
+    // run loop (parent loop)
+    // till number of rows
+    for (int i = n; i > 0; i--)
+    {
+        // loop for initially space,
+        // before star printing
+        for (int j = 0; j < space; j++)
+            cout << "" "";
+
+
+        // Print i stars
+        for (int j = 0;j < i;j++)
+            cout << ""* "";
+
+
+        cout << endl;
+        space++;
+    }
+}
+
+
+// Driver code
+int main()
+{
+    printDiamond(5);
+    return 0;
+}
+
+
+// This is code is contributed
+// by rathbhupendra"
